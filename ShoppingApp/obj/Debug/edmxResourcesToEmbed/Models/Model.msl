@@ -51,5 +51,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Marka_to_Category">
+      <EntityTypeMapping TypeName="ShoppingDbModel.Marka_to_Category">
+        <MappingFragment StoreEntitySet="Marka_to_Category">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="MarkaId" ColumnName="MarkaId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -111,7 +111,7 @@ namespace ShoppingApp
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Corbel", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(135, 271);
+            this.txtPassword.Location = new System.Drawing.Point(140, 261);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(237, 24);
             this.txtPassword.TabIndex = 17;
@@ -132,7 +132,7 @@ namespace ShoppingApp
             // 
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsername.Font = new System.Drawing.Font("Corbel", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(136, 206);
+            this.txtUsername.Location = new System.Drawing.Point(141, 196);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(237, 24);
             this.txtUsername.TabIndex = 15;
@@ -187,6 +187,7 @@ namespace ShoppingApp
             this.chkShowPass.TabIndex = 26;
             this.chkShowPass.Text = "Show Password";
             this.chkShowPass.UseVisualStyleBackColor = true;
+            this.chkShowPass.CheckedChanged += new System.EventHandler(this.chkShowPass_CheckedChanged);
             // 
             // Login
             // 
@@ -211,6 +212,7 @@ namespace ShoppingApp
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "login";
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

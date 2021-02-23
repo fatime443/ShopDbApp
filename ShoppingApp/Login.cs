@@ -35,8 +35,22 @@ namespace ShoppingApp
                 {
                     if (selectedWorker.Password == password.HashCode())
                     {
+                        if (chkRemember.Checked)
+                        {
+                            Properties.Settings.Default.username = username;
+                            Properties.Settings.Default.password = password;
+                            Properties.Settings.Default.isCheck = true;
+                            Properties.Settings.Default.Save();
+                        }
+                        else
+                        {
+                            Properties.Settings.Default.username = string.Empty;
+                            Properties.Settings.Default.password = string.Empty;
+                            Properties.Settings.Default.isCheck = false;
+                            Properties.Settings.Default.Save();
+                        }
                         lblError.Visible = false;
-                        Dashboard dashboard = new Dashboard();
+                        Dashboard dashboard = new Dashboard(selectedWorker);
                         dashboard.ShowDialog();
                         this.Close();
                     }
@@ -56,6 +70,28 @@ namespace ShoppingApp
             {
                 lblError.Text = "Please, fill all field!";
                 lblError.Visible = true;
+            }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.isCheck)
+            {
+                txtUsername.Text = Properties.Settings.Default.username;
+                txtPassword.Text = Properties.Settings.Default.password;
+                chkRemember.Checked = true;
+            }
+        }
+
+        private void chkShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowPass.Checked)
+            {
+                txtPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = true; 
             }
         }
     }

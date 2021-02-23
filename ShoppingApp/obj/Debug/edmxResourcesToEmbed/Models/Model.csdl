@@ -7,6 +7,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Category_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Products" Relationship="Self.FK__Products__Catego__3C69FB99" FromRole="Categories" ToRole="Products" />
+    <NavigationProperty Name="Marka_to_Category" Relationship="ShoppingDbModel.FK_Marka_to_Category_Categories" FromRole="Category" ToRole="Marka_to_Category" />
   </EntityType>
   <EntityType Name="Marka">
     <Key>
@@ -15,6 +16,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Marka_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Products" Relationship="Self.FK__Products__MarkaI__3B75D760" FromRole="Markas" ToRole="Products" />
+    <NavigationProperty Name="Marka_to_Category" Relationship="ShoppingDbModel.FK_Marka_to_Category_Markas" FromRole="Marka" ToRole="Marka_to_Category" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -35,7 +37,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Product_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Product_Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Product_Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="MarkaId" Type="Int32" Nullable="false" />
     <Property Name="CategoryId" Type="Int32" Nullable="false" />
@@ -123,5 +125,48 @@
       <End Role="Worker" EntitySet="Workers" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
+    <EntitySet Name="Marka_to_Category" EntityType="ShoppingDbModel.Marka_to_Category" />
+    <AssociationSet Name="FK_Marka_to_Category_Categories" Association="ShoppingDbModel.FK_Marka_to_Category_Categories">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Marka_to_Category" EntitySet="Marka_to_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Marka_to_Category_Markas" Association="ShoppingDbModel.FK_Marka_to_Category_Markas">
+      <End Role="Marka" EntitySet="Markas" />
+      <End Role="Marka_to_Category" EntitySet="Marka_to_Category" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Marka_to_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MarkaId" Type="Int32" />
+    <Property Name="CategoryId" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="ShoppingDbModel.FK_Marka_to_Category_Categories" FromRole="Marka_to_Category" ToRole="Category" />
+    <NavigationProperty Name="Marka" Relationship="ShoppingDbModel.FK_Marka_to_Category_Markas" FromRole="Marka_to_Category" ToRole="Marka" />
+  </EntityType>
+  <Association Name="FK_Marka_to_Category_Categories">
+    <End Type="ShoppingDbModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="ShoppingDbModel.Marka_to_Category" Role="Marka_to_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Marka_to_Category">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Marka_to_Category_Markas">
+    <End Type="ShoppingDbModel.Marka" Role="Marka" Multiplicity="0..1" />
+    <End Type="ShoppingDbModel.Marka_to_Category" Role="Marka_to_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marka">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Marka_to_Category">
+        <PropertyRef Name="MarkaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

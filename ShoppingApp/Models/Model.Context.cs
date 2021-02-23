@@ -30,5 +30,6 @@ namespace ShoppingApp.Models
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<Marka_to_Category> Marka_to_Category { get; set; }
     }
 }

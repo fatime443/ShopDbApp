@@ -18,6 +18,7 @@ namespace ShoppingApp.Models
         public Category()
         {
             this.Products = new HashSet<Product>();
+            this.Marka_to_Category = new HashSet<Marka_to_Category>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace ShoppingApp.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Marka_to_Category> Marka_to_Category { get; set; }
     }
 }

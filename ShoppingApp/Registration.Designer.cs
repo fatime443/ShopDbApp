@@ -130,9 +130,9 @@ namespace ShoppingApp
             this.btnRegiter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegiter.Font = new System.Drawing.Font("Cooper Black", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegiter.ForeColor = System.Drawing.Color.White;
-            this.btnRegiter.Location = new System.Drawing.Point(202, 433);
+            this.btnRegiter.Location = new System.Drawing.Point(132, 433);
             this.btnRegiter.Name = "btnRegiter";
-            this.btnRegiter.Size = new System.Drawing.Size(150, 44);
+            this.btnRegiter.Size = new System.Drawing.Size(291, 44);
             this.btnRegiter.TabIndex = 8;
             this.btnRegiter.Text = "Register";
             this.btnRegiter.UseVisualStyleBackColor = false;
@@ -144,7 +144,7 @@ namespace ShoppingApp
             this.lblExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblExit.Font = new System.Drawing.Font("Kristen ITC", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExit.ForeColor = System.Drawing.Color.Crimson;
-            this.lblExit.Location = new System.Drawing.Point(261, 521);
+            this.lblExit.Location = new System.Drawing.Point(246, 528);
             this.lblExit.Name = "lblExit";
             this.lblExit.Size = new System.Drawing.Size(46, 23);
             this.lblExit.TabIndex = 9;
@@ -166,7 +166,7 @@ namespace ShoppingApp
             this.lblError.AutoSize = true;
             this.lblError.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(81, 481);
+            this.lblError.Location = new System.Drawing.Point(82, 493);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(45, 18);
             this.lblError.TabIndex = 11;
@@ -190,7 +190,7 @@ namespace ShoppingApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(534, 553);
+            this.ClientSize = new System.Drawing.Size(534, 560);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.pictureBox1);

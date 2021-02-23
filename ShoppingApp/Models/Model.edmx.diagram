@@ -14,6 +14,9 @@
         <AssociationConnector Association="ShoppingDbModel.FK__Products__MarkaI__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="ShoppingDbModel.FK__Orders__ProductI__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="ShoppingDbModel.FK__Orders__WorkerId__412EB0B6" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShoppingDbModel.Marka_to_Category" Width="1.5" PointX="6" PointY="4.375" />
+        <AssociationConnector Association="ShoppingDbModel.FK_Marka_to_Category_Categories" />
+        <AssociationConnector Association="ShoppingDbModel.FK_Marka_to_Category_Markas" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
