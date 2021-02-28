@@ -30,7 +30,7 @@ namespace ShoppingApp
         private void InitializeComponent()
         {
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgProduct = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.cmbMarka = new System.Windows.Forms.ComboBox();
@@ -41,7 +41,8 @@ namespace ShoppingApp
             this.nmCount = new System.Windows.Forms.NumericUpDown();
             this.lblAmount = new System.Windows.Forms.Label();
             this.btnSell = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lblStockCount = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,21 +51,21 @@ namespace ShoppingApp
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.ForeColor = System.Drawing.Color.White;
-            this.lblWelcome.Location = new System.Drawing.Point(262, 26);
+            this.lblWelcome.Location = new System.Drawing.Point(39, 18);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(67, 27);
             this.lblWelcome.TabIndex = 0;
             this.lblWelcome.Text = "label1";
             // 
-            // dataGridView1
+            // dtgProduct
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dataGridView1.Location = new System.Drawing.Point(364, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(426, 489);
-            this.dataGridView1.TabIndex = 1;
+            this.dtgProduct.BackgroundColor = System.Drawing.Color.White;
+            this.dtgProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgProduct.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dtgProduct.Location = new System.Drawing.Point(256, 0);
+            this.dtgProduct.Name = "dtgProduct";
+            this.dtgProduct.Size = new System.Drawing.Size(657, 489);
+            this.dtgProduct.TabIndex = 1;
             // 
             // label1
             // 
@@ -84,7 +85,7 @@ namespace ShoppingApp
             this.cmbCategory.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(32, 118);
-            this.cmbCategory.MinimumSize = new System.Drawing.Size(1, 0);
+            this.cmbCategory.MinimumSize = new System.Drawing.Size(4, 0);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(259, 27);
             this.cmbCategory.TabIndex = 3;
@@ -96,7 +97,7 @@ namespace ShoppingApp
             this.cmbMarka.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMarka.FormattingEnabled = true;
             this.cmbMarka.Location = new System.Drawing.Point(32, 175);
-            this.cmbMarka.MinimumSize = new System.Drawing.Size(1, 0);
+            this.cmbMarka.MinimumSize = new System.Drawing.Size(4, 0);
             this.cmbMarka.Name = "cmbMarka";
             this.cmbMarka.Size = new System.Drawing.Size(259, 27);
             this.cmbMarka.TabIndex = 5;
@@ -120,7 +121,7 @@ namespace ShoppingApp
             this.cmbProduct.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProduct.FormattingEnabled = true;
             this.cmbProduct.Location = new System.Drawing.Point(32, 234);
-            this.cmbProduct.MinimumSize = new System.Drawing.Size(1, 0);
+            this.cmbProduct.MinimumSize = new System.Drawing.Size(4, 0);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(259, 27);
             this.cmbProduct.TabIndex = 7;
@@ -143,7 +144,7 @@ namespace ShoppingApp
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(28, 265);
+            this.label4.Location = new System.Drawing.Point(28, 306);
             this.label4.MinimumSize = new System.Drawing.Size(1, 1);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 19);
@@ -154,7 +155,7 @@ namespace ShoppingApp
             // 
             this.nmCount.Enabled = false;
             this.nmCount.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nmCount.Location = new System.Drawing.Point(32, 287);
+            this.nmCount.Location = new System.Drawing.Point(32, 328);
             this.nmCount.Minimum = new decimal(new int[] {
             1,
             0,
@@ -175,7 +176,7 @@ namespace ShoppingApp
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmount.ForeColor = System.Drawing.Color.White;
-            this.lblAmount.Location = new System.Drawing.Point(30, 322);
+            this.lblAmount.Location = new System.Drawing.Point(30, 363);
             this.lblAmount.MinimumSize = new System.Drawing.Size(1, 1);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(76, 19);
@@ -186,23 +187,39 @@ namespace ShoppingApp
             // btnSell
             // 
             this.btnSell.BackColor = System.Drawing.Color.LightBlue;
+            this.btnSell.Enabled = false;
             this.btnSell.FlatAppearance.BorderColor = System.Drawing.Color.BlueViolet;
             this.btnSell.FlatAppearance.BorderSize = 2;
             this.btnSell.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSell.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSell.Location = new System.Drawing.Point(34, 370);
+            this.btnSell.Location = new System.Drawing.Point(32, 391);
             this.btnSell.Name = "btnSell";
             this.btnSell.Size = new System.Drawing.Size(257, 47);
             this.btnSell.TabIndex = 11;
             this.btnSell.Text = "Sell";
             this.btnSell.UseVisualStyleBackColor = false;
+            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
+            // 
+            // lblStockCount
+            // 
+            this.lblStockCount.AutoSize = true;
+            this.lblStockCount.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockCount.ForeColor = System.Drawing.Color.White;
+            this.lblStockCount.Location = new System.Drawing.Point(30, 277);
+            this.lblStockCount.MinimumSize = new System.Drawing.Size(1, 1);
+            this.lblStockCount.Name = "lblStockCount";
+            this.lblStockCount.Size = new System.Drawing.Size(111, 19);
+            this.lblStockCount.TabIndex = 12;
+            this.lblStockCount.Text = "Stock Count";
+            this.lblStockCount.Visible = false;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(790, 489);
+            this.ClientSize = new System.Drawing.Size(913, 489);
+            this.Controls.Add(this.lblStockCount);
             this.Controls.Add(this.btnSell);
             this.Controls.Add(this.lblAmount);
             this.Controls.Add(this.nmCount);
@@ -213,15 +230,16 @@ namespace ShoppingApp
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtgProduct);
             this.Controls.Add(this.lblWelcome);
             this.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -231,7 +249,7 @@ namespace ShoppingApp
         #endregion
 
         private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgProduct;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.ComboBox cmbMarka;
@@ -242,5 +260,6 @@ namespace ShoppingApp
         private System.Windows.Forms.NumericUpDown nmCount;
         private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.Button btnSell;
+        private System.Windows.Forms.Label lblStockCount;
     }
 }

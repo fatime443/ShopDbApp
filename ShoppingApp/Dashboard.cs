@@ -35,17 +35,41 @@ namespace ShoppingApp
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            lblWelcome.Location = new Point((lblWelcome.Parent.ClientSize.Width - lblWelcome.ClientSize.Width) / 2-300,20);
             lblWelcome.Text = "Welcome " + _activeWorker.Fullname;
             FillCategoryComboBox();
             FillMarkaComboBox();
+            FillProductDataGridView();
+        }
+        private void ComponentVisible()
+        {
+          
+            
+                nmCount.Enabled = false;
+                nmCount.Value = 1;
+                lblAmount.Visible = false;
+                lblStockCount.Visible = false;
+                btnSell.Enabled = false;
+            
+           
+        }
+        private void FillProductDataGridView()
+        {
+            dtgProduct.DataSource = _context.Orders.Where(x => x
+            .WorkerId == _activeWorker.Id)
+                .Select(x => new
+                {
+                x.Product.Product_Name,
+                x.Price,
+                x.Amount,
+                x.Purchase_Date,
+                x.Product.Marka.Marka_Name,
+                x.Product.Category.Category_Name,
+                }).ToList();
         }
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nmCount.Enabled = false;
-            nmCount.Value = 1;
-            lblAmount.Visible = false;
+            ComponentVisible();
             string category = cmbCategory.Text;
             string marka = cmbMarka.Text;
             cmbProduct.Items.Clear();
@@ -57,9 +81,7 @@ namespace ShoppingApp
 
         private void cmbMarka_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nmCount.Enabled = false;
-            nmCount.Value = 1;
-            lblAmount.Visible = false;
+            ComponentVisible();
             string marka = cmbMarka.Text;
             string category = cmbCategory.Text;
             cmbProduct.Items.Clear();
@@ -73,17 +95,51 @@ namespace ShoppingApp
             selectedProduct = _context.Products.FirstOrDefault(x => x.Product_Name == product);
             if (selectedProduct != null)
             {
-                lblAmount.Text = "Amount: " + selectedProduct.Product_Price + "Azn";
-                lblAmount.Visible = true;
+                if (selectedProduct.Quantity >0)
+                {
+                    lblAmount.Text = "Amount: " + selectedProduct.Product_Price + "Azn";
+                    lblAmount.Visible = true;
+                    nmCount.Maximum = selectedProduct.Quantity;
+                    lblStockCount.Visible = true;
+                    lblStockCount.Text = selectedProduct.Quantity + " pieces";
+                    btnSell.Enabled = true;
+                }
+                else
+                {
+                    lblStockCount.Visible = true;
+                    lblStockCount.Text = "Out of Stock!!!!!";
+                    btnSell.Enabled = false;
+                    nmCount.Enabled = false;
+                }
+               
             }
         }
 
         private void nmCount_ValueChanged(object sender, EventArgs e)
         {
-            string product = cmbProduct.Text;
-            selectedProduct = _context.Products.FirstOrDefault(x => x.Product_Name == product);
             lblAmount.Text = "Amount: " + selectedProduct.Product_Price * nmCount.Value + "Azn";
             lblAmount.Visible = true;
+        }
+
+        private void btnSell_Click(object sender, EventArgs e)
+        {
+            Order order = new Order();
+            order.Purchase_Date = DateTime.Now;
+            order.WorkerId = _activeWorker.Id;
+            order.ProductId = selectedProduct.Id;
+            order.Amount = (int)nmCount.Value;
+            order.Price = selectedProduct.Product_Price * (int)nmCount.Value;
+            selectedProduct.Quantity -= (int)nmCount.Value;
+            _context.Orders.Add(order);
+            MessageBox.Show($"Product: { selectedProduct.Product_Name} sold successfully", "success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            _context.SaveChanges();
+            ComponentVisible();
+            FillProductDataGridView();
+            cmbCategory.Items.Clear();
+            cmbMarka.Items.Clear();
+            cmbProduct.Items.Clear();
+            FillCategoryComboBox();
+            FillMarkaComboBox();
         }
     }
 }
