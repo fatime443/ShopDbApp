@@ -99,7 +99,7 @@ namespace ShoppingApp
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Cooper Black", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(51, 363);
+            this.btnLogin.Location = new System.Drawing.Point(52, 371);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(329, 44);
             this.btnLogin.TabIndex = 20;
@@ -181,7 +181,7 @@ namespace ShoppingApp
             this.chkShowPass.AutoSize = true;
             this.chkShowPass.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkShowPass.ForeColor = System.Drawing.Color.DarkCyan;
-            this.chkShowPass.Location = new System.Drawing.Point(212, 301);
+            this.chkShowPass.Location = new System.Drawing.Point(51, 330);
             this.chkShowPass.Name = "chkShowPass";
             this.chkShowPass.Size = new System.Drawing.Size(160, 23);
             this.chkShowPass.TabIndex = 26;
